@@ -33,7 +33,7 @@ button {
 }
 
 section.start-screen {
-	display: none;
+	/*display: none;*/
 }
 
 section.question-screen {
@@ -58,6 +58,10 @@ section.results-screen h2, p{
 }
 
 section.totals-screen {
-	/*display: none;*/
+	display: none;
 	text-align: center;
+}
+
+section.totals-screen h2 {
+	margin-bottom: 15px;
 }
