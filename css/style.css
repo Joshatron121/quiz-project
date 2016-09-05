@@ -13,17 +13,6 @@ header h1 {
 	display: inline-block;
 }
 
-nav ul li {
-	display: inline-block;
-	margin-right: 10px;
-}
-
-nav {
-	display: inline-block;
-	float: right;
-	padding: 15px;
-}
-
 section {
 	margin-left: 20px;
 }
@@ -33,7 +22,6 @@ button {
 }
 
 section.start-screen {
-	/*display: none;*/
 }
 
 section.question-screen {
@@ -47,6 +35,18 @@ section.question-screen h3 {
 section.question-screen ul {
 	list-style: none;
 	margin-bottom: 15px;
+}
+
+.answer-1 {
+	margin-top: 10px;
+}
+
+li[class*="answer"] {
+	cursor: pointer;
+	margin-top: 5px;
+}
+li[class*="answer"]:hover {
+	border: 1px solid black;
 }
 
 section.results-screen {
