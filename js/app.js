@@ -50,20 +50,20 @@ $(function(){
 			}
 		],
 		lettersArray: ['a. ', 'b. ', 'c. ', 'd. ', 'e. ', 'f. ', 'g. ', 'h. ', 'i. ', 'j. ', 'k. ', 'l. ', 'm. ', 'n. ', 'o. ', 'p. ', 'q. ', 'r. ', 's. ', 't. ', 'u. ', 'v. ', 'w. ', 'x. ', 'y. ', 'z. '],
-		correctAnswersArray: [3, 1, 1, 3, 2, 2, 1, 2, 1, 0, ],
+		correctAnswersArray: [3, 1, 1, 3, 2, 2, 1, 2, 1, 0, 0],
 		totalCorrect: 0,
 	};
 
 	$('button#start-quiz').click(function(){
 		// initialize new quiz
-		$('section.start-screen').hide();
+		$('section.start-screen').hide('slide');
 		$('section.question-screen').show();
 		quizInitialization()
 	});
 
 	$('button#start-over').click(function(){
 		// initialize new quiz
-		$('section.totals-screen').hide();
+		$('section.totals-screen').hide('slide');
 		$('section.question-screen').show();
 		quizInitialization()
 	});
@@ -73,19 +73,19 @@ $(function(){
 			$('button#next-question').text('Next Question');
 			$('section.results-screen p').text('');
 			$('ul.question-list').children().remove();
-			$('section.results-screen').hide();
+			$('section.results-screen').hide('slide');
 			$('section.totals-screen').show();
 			$('section.totals-screen h2').text('You got ' + currentQuiz.totalCorrect + ' out of ' + currentQuiz.questionsArray.length + ' correct! Great job!')
 		} else {
 			$('section.results-screen p').text('');
 			$('ul.question-list').children().remove();
-			$('section.results-screen').hide();
+			$('section.results-screen').hide('slide');
 			$('section.question-screen').show();
 			buildQuestion(questionCount);
 		}
 	})
 
-	$('ul').on('click', 'li', function(){
+	$('ul').on('click', 'li[class*="answer"]', function(){
 		if($(this).hasClass('answer-' + (currentQuiz.correctAnswersArray[questionCount] + 1))) {
 			storeAnswer(true);
 		} else {
@@ -98,38 +98,36 @@ $(function(){
 		questionCount = 0;
 		currentQuiz = Object.create(Quiz);
 		buildQuestion(questionCount)
-		// for (var i = 0; i < currentQuiz.questionsArray.length; i++ ) {
-		// 	buildQuestion(i, currentQuiz);
-		// }
 	}
 
 	var buildQuestion = function(questionNum) {
 		var storedQuestionObject = currentQuiz.questionsArray[questionNum];
-		$('.question-number').text((questionNum + 1) + ' of ' + currentQuiz.questionsArray.length);
-		$('ul.question-list').append('<li>' + (questionNum + 1) + '. ' + storedQuestionObject.question + '</li>');
+		$('.question-number').text('Question ' + (questionNum + 1) + ' of ' + currentQuiz.questionsArray.length);
+		$('ul.question-list').append('<li class="collection-item">' + (questionNum + 1) + '. ' + storedQuestionObject.question + '</li>');
 		for(var i = 0; i < storedQuestionObject.answersArray.length; i++) {
-			$('ul.question-list').append('<li class="answer-' + (i + 1) + '">' + currentQuiz.lettersArray[i] + storedQuestionObject.answersArray[i] + '</li>');
+			$('ul.question-list').append('<li class="collection-item answer-' + (i + 1) + '">' + currentQuiz.lettersArray[i] + storedQuestionObject.answersArray[i] + '</li>');
 		};
 	}
 
 	var storeAnswer = function(answerChoice){
 		if(answerChoice == true) {
-			buildResults('You got it!', true);
+			buildResults(true);
 			currentQuiz.totalCorrect++
 		} else {
-			buildResults('Sorry, not quite. The correct answer was:', false)
+			buildResults(false)
 		}
 		questionCount++;
 	}
 
-	var buildResults = function(result, success) {
-		$('.question-screen').hide();
+	var buildResults = function(success) {
+		$('.question-screen').hide('slide');
 		$('.results-screen').show();
 		if(success == true) {
-			$('.results-screen h2').text(result);
-		} else {
-			$('.results-screen h2').text(result);
-			$('.results-screen p').text(currentQuiz.lettersArray[currentQuiz.correctAnswersArray[questionCount]] + currentQuiz.questionsArray[questionCount].answersArray[currentQuiz.correctAnswersArray[questionCount]])
+			$('.results-screen h2').text('You got it!').append('&nbsp;<i class="fa fa-smile-o" aria-hidden="true"></i>');
+			$('.results-screen p').text('')
+		} else if(success == false) {
+			$('.results-screen h2').text('Sorry, not quite.').append('&nbsp;<i class="fa fa-frown-o" aria-hidden="true"></i>');
+			$('.results-screen p').text('The correct answer was: ' + currentQuiz.lettersArray[currentQuiz.correctAnswersArray[questionCount]] + currentQuiz.questionsArray[questionCount].answersArray[currentQuiz.correctAnswersArray[questionCount]])
 		}
 		if(questionCount == currentQuiz.questionsArray.length-1){
 			$('button#next-question').text('View Results');
