@@ -103,7 +103,7 @@ $(function(){
 	var buildQuestion = function(questionNum) {
 		var storedQuestionObject = currentQuiz.questionsArray[questionNum];
 		$('.question-number').text('Question ' + (questionNum + 1) + ' of ' + currentQuiz.questionsArray.length);
-		$('ul.question-list').append('<li class="collection-item">' + (questionNum + 1) + '. ' + storedQuestionObject.question + '</li>');
+		$('ul.question-list').append('<li class="collection-item">' + storedQuestionObject.question + '</li>');
 		for(var i = 0; i < storedQuestionObject.answersArray.length; i++) {
 			$('ul.question-list').append('<li class="collection-item answer-' + (i + 1) + '">' + currentQuiz.lettersArray[i] + storedQuestionObject.answersArray[i] + '</li>');
 		};
