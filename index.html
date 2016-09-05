@@ -4,34 +4,83 @@
 	<meta charset="UTF-8">
 	<meta name="description" content="Thinkful Quiz Project Challenge.">
 	<title>Quiz Project</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
 	<link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 	<header>
-		<h1>The Stargate Program Quiz</h1>
+		<nav>
+			<div class="nav-wrapper blue lighten-2 text">
+				<a href="#" class="brand-logo left black-text">The Stargate Program Quiz</a>
+			</div>
+		</nav>
 	</header>
 	<main>
-		<section class="start-screen">
-			<button name="start-quiz" id="start-quiz">Start Quiz</button>			
-		</section>
-		<section class="question-screen">
-			<h3 class="question-number">1 of 5
-			</h3>
-			<ul class="question-list">
-			</ul>
-		</section>
-		<section class="results-screen">
-			<h2>You're right!</h2>
-			<p></p>
-			<button name="next-question" id="next-question">Next Question</button>
-		</section>
-		<section class="totals-screen">
-			<h2>Placeholder Text!</h2>
-			<button name="start-over" id="start-over">Play Again?</button>
-		</section>
+		<div class="container">
+			<section class="start-screen section">
+				<div class="row">
+					<div class="col s12 m8 offset-m2 l8  offset-l2">
+						<div class="card blue accent-2">
+							<div class="card-content white-text text-darken-3">
+								<span class="card-title">Welcome to the Stargate Program Quiz!</span>
+								<p>Based on the TV Shows and Movies of the Stargate Series, this quiz will surely test your knowledge on all things Stargate. Click Start Quiz to begin, then select your answer on each screen!</p>
+								<div class="card-action">
+									<button name="start-quiz" class="btn waves-effect waves-light blue lighten-2 black-text" id="start-quiz">Start Quiz</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>	
+			</section>
+			<section class="question-screen section">
+				<div class="row">
+					<div class="col s12 m10 offset-m1 l10 offset-l1">
+						<div class="card blue accent-2">
+							<div class="card-content white-text">
+								<span class="card-title"><h3 class="question-number white-text text-darken-3">1 of 5
+								</h3></span>
+								<ul class="collection question-list black-text">
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+			<section class="results-screen section">
+				<div class="row">
+					<div class="col s12 m8 offset-m2 l8  offset-l2">
+						<div class="card blue accent-2">
+							<div class="card-content white-text text-darken-3">
+								<span class="card-title"><h2>You're right!</h2></span>
+								<p></p>
+								<div class="card-action">
+									<button name="next-question" class="btn waves-effect waves-light blue lighten-2 black-text" id="next-question">Next Question</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+			<section class="totals-screen section">
+				<div class="row">
+					<div class="col s12 m8 offset-m2 l8  offset-l2">
+						<div class="card blue accent-2">
+							<div class="card-content white-text text-darken-3">
+								<span class="card-title"><h2>Placeholder Text!</h2></span>
+								<div class="card-action">
+									<button name="start-over" class="btn waves-effect waves-light blue lighten-2 black-text" id="start-over">Play Again?</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+		</div>
 	</main>
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
 	<script src="js/app.js"></script>
 </body>
 </html>

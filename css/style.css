@@ -1,9 +1,8 @@
-* {
-	box-sizing: border-box;
-	margin: 0;
+body {
+	background: #e8eaf6;
 }
 
-header {
+/*header {
 	border-bottom: 2px solid black;
 	padding: 20px;
 	margin-bottom: 30px;
@@ -11,17 +10,22 @@ header {
 
 header h1 {
 	display: inline-block;
-}
+}*/
 
-section {
+/*section {
 	margin-left: 20px;
 }
 
 button {
 	font-size: 20px;
-}
+}*/
+
+/*section.start-screen {
+	background-color: lightblue;
+}*/
 
 section.start-screen {
+	text-align: center;
 }
 
 section.question-screen {
@@ -45,11 +49,13 @@ li[class*="answer"] {
 	cursor: pointer;
 	margin-top: 5px;
 }
+
 li[class*="answer"]:hover {
 	border: 1px solid black;
 }
 
 section.results-screen {
+	text-align: center;
 	display: none;
 }
 
